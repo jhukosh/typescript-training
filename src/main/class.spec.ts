@@ -2,26 +2,26 @@ import { ConsoleReporter } from "jasmine";
 
 describe('class', () => {
 
-  xit('has a constructor for initialization', () => {
+  it('has a constructor for initialization', () => {
     // Create a Musician class
     // Add a constructor that takes one param, the instrument.
     // Set this.instrument to the instrument passed in
 
     class Musician {
       instrument: string;
-      constructor (instrument: string){
+      constructor (instrument){
         this.instrument = instrument;
       }
     }
 
-    const musician = new Musician('guitar')
+    const musician = new Musician()
     const ringo = new Musician('drums')
 
     expect(musician.instrument).toBeUndefined()
     expect(ringo.instrument).toBe('drums')
   })
 
-  xit('constructor can have default param values', () => {
+  it('constructor can have default param values', () => {
     // Create a Musician class with a constructor
     // Make your class default (using default params) the instrument to 'guitar'
 
@@ -39,7 +39,7 @@ describe('class', () => {
     expect(ringo.instrument).toBe('drums')
   })
 
-  xit('can have instance methods', () => {
+  it('can have instance methods', () => {
     // Create a Musician class, pass in the instrument to the constructor,
     // and add a play function to the class definition
 
@@ -50,7 +50,7 @@ describe('class', () => {
     }
 
     play() {
-      console.log("I\'m playing " + this.instrument);
+      return "I\'m playing " + this.instrument;
     }
   }
 
@@ -61,7 +61,7 @@ describe('class', () => {
     expect(musician.play()).toBe("I'm playing drums")
   })
 
-  xit('can have static methods and properties', () => {
+  it('can have static methods and properties', () => {
     // Create a Musician class, pass in the instrument to the constructor,
     // create a static property instances (that will hold all created instances) and
     // create a static method create that encapsulates calling constructor
@@ -73,6 +73,7 @@ describe('class', () => {
         this.instrument = instrumentPassed;
       }
       static instances: Musician[] = [];
+
       static create(instrumentParam: string): Musician {
         const musician = new Musician(instrumentParam);
         Musician.instances.push(musician);
@@ -92,7 +93,7 @@ describe('class', () => {
     expect(Musician.instances.length).toBe(2)
   })
 
-  xit('can extend another class', () => {
+  it('can extend another class', () => {
     // Create a Musician class
     // Create a Rockman class that extends Musician
     // Add play method to Musician
@@ -104,7 +105,7 @@ describe('class', () => {
       }
 
       play(){
-        console.log("I\'m playing " + this.instrument);
+        return "I\'m playing " + this.instrument;
       }
     }
 
@@ -123,18 +124,19 @@ describe('class', () => {
     expect(rockman.play()).toBe("I'm playing guitar")
   })
 
-  xit('can use property setters and getters', () => {
+  it('can use property setters and getters', () => {
     // Create a Musician class, pass in the instrument to the constructor,
     // Add property getter for description
 
     class Musician {
       instrument : string;
-      description = "this musician plays ";
+      description : string;
       constructor (instrumentPassed : string) {
         this.instrument = instrumentPassed;
+        this.description = 'this musician plays ' + this.instrument;
       }
       play(){
-        console.log(this.getter + this.instrument);
+        return this.description + this.instrument;
       }
     }
 
@@ -145,7 +147,7 @@ describe('class', () => {
     expect(drummer.description).toBe('this musician plays drums')
   })
 
-  xit('can use property setters and getters', () => {
+  it('can use property setters and getters', () => {
     // Create a Musician class
     // Add property getter for allBands
     // - it will return a string describing all the bands that this musician played in
@@ -154,19 +156,17 @@ describe('class', () => {
 
     class Musician {
       instrument : string;
-      description = "this musician plays ";
-      band : string;
+      bands = [];
 
       constructor (instrumentPassed : string) {
         this.instrument = instrumentPassed;
       }
 
-      static bands = [];
-
-      allBands(): Musician {
-        const band = this.band;
-        Musician.bands.push(band);
-        return musician;
+      get allBands() {
+        return `this musician played in ${this.bands.join(', ')}`
+      }
+      set band(item) {
+        this.bands.push(item);
       }
     }
 

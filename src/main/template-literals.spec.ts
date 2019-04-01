@@ -1,6 +1,6 @@
 describe('Template literals', () => {
 
-  it('should support string interpolation', () => {
+  xit('should support string interpolation', () => {
     const personPL = {
       name: 'Jarosław',
       friends: ['Antoni', 'Andrzej', 'Krystyna', 'Wiktor']
@@ -20,7 +20,7 @@ describe('Template literals', () => {
     )
   })
 
-  it('should support multi-line strings', () => {
+  xit('should support multi-line strings', () => {
     // construct a string with multiple lines without needing escaped newline characters, 
     const multiLine = ` 
     Oh 
@@ -31,7 +31,7 @@ describe('Template literals', () => {
     expect(multiLine).toBe('\n    Oh\n    my\n    dear\n    so much fun!')
   })
 
-  it('should support string escaping', () => {
+  xit('should support string escaping', () => {
     // escape a string in a template literal for each of these
     let str1 = `Hi 
     there!`;
@@ -41,7 +41,7 @@ describe('Template literals', () => {
   })
 
   // you likely wont often use tagging, but it can be handy!
-  it('should call the tagging function', () => {
+  xit('should call the tagging function', () => {
     const noun = 'World'
     const emotion = 'happy'
     const hello = tagIt`Hello ${noun}! Are you feeling ${emotion} today?`
@@ -58,7 +58,7 @@ describe('Template literals', () => {
     }
   })
 
-  it('can be curried', () => {
+  xit('can be curried', () => {
     // Using tagged template strings, write journey function
     // that will accept following 3 template strings
     // and return a string describing the journey
