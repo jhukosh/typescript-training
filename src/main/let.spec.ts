@@ -2,18 +2,18 @@ describe('let declarations', () => {
 
   const noop = (...arg) => {}
 
-  xit('can be used in place of `var`', () => {
+  it('can be used in place of `var`', () => {
     // Declare musician using 'let'
     // Declare isDead using 'let'
 
     let musician = 'John Lennon';
-    let isDead;
+    let isDead = true;
 
     expect(musician).toBe('John Lennon')
     expect(isDead).toBe(true)
   })
 
-  xit('can modify the value of a `let` variable', () => {
+  it('can modify the value of a `let` variable', () => {
     // Delcare 'releaseName' using 'let', setting the value to 'ES6'
     // Change value of releaseName to be `ES2015`, the new name for ES6
 
@@ -23,7 +23,7 @@ describe('let declarations', () => {
     expect(releaseName).toBe('ES2015')
   })
 
-  xit('is trapped inside of an `if` statement', () => {
+  it('is trapped inside of an `if` statement', () => {
     if (true) {
       // Change to `var` to `let`, so that b is scoped inside of the if-statement
       let b = 1
@@ -31,7 +31,7 @@ describe('let declarations', () => {
     expect(() => noop(b)).toThrow()
   })
 
-  xit('cannot redeclare using the same name', () => {
+  it('cannot redeclare using the same name', () => {
     function doLoop() {
       // Change loop counter to `let` so that it is trapped inside of the loop, and can't be returned.
       for (let i = 0; i < 10; i++) {
@@ -43,7 +43,7 @@ describe('let declarations', () => {
     expect(doLoop).toThrow()
   })
 
-  xit('enable to use block statements', () => {
+  it('enable to use block statements', () => {
     // BLOCK STATEMENT
     {
       // Change to `let` declaration
@@ -53,7 +53,7 @@ describe('let declarations', () => {
     expect(() => noop('d', d)).toThrow()
   })
 
-  xit('enable to use nested block statements', () => {
+  it('enable to use nested block statements', () => {
     // replace dots (...) below with appropriate `let` statements to make expectations pass
 
     // NESTED BLOCK STATEMENTS
@@ -66,8 +66,10 @@ describe('let declarations', () => {
         message = 'died';
         expect(message).toBe('died')
       }
+      message = 'Lennon';
       expect(message).toBe('Lennon')
     }
+    message = 'John';
     expect(message).toBe('John')
     // how many variables do we declare here?
   })
