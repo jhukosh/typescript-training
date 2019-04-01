@@ -62,7 +62,7 @@ there!`;
     // Using tagged template strings, write journey function
     // that will accept following 3 template strings
     // and return a string describing the journey
-    const journey = first => second => third => `${first}, then ${second} and finally ${third}!`;
+    const journey = item1 => item2 => item3 => `${item1}, then ${item2} and finally ${item3}!`;
 
     expect(journey `Warsaw` `Poznan` `Berlin`).toBe('Warsaw, then Poznan and finally Berlin!')
     expect(journey `Poland` `Czech` `Austria`).toBe('Poland, then Czech and finally Austria!')

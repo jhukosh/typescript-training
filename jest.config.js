@@ -3,7 +3,7 @@ module.exports = {
   testEnvironment: 'node',
   testPathIgnorePatterns: [
     "/node_modules/",
-    //"/src/fake.spec.ts",
+    "/src/fake.spec.ts",
     //"/src/main/",
     "/src/datatypes/",
     "/src/params/",
