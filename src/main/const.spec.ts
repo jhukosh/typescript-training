@@ -4,8 +4,8 @@ describe('const declarations', () => {
     // modify `var` below to a `const`
     // then you have to make the `const` unchaged (comment the changing line)
 
-    var releaseName = 'ES6'
-    releaseName = 'ES2015';
+    const releaseName = 'ES6'
+    // releaseName = 'ES2015'; can not be changed as a constant variable
 
     expect(releaseName).toEqual('ES6')
   })
@@ -14,7 +14,7 @@ describe('const declarations', () => {
     // modify `var` below to a `const`
     // implement a function to make the tests pass
 
-    var myFn;
+    const myFn = () => 'training';
 
     expect(myFn()).toEqual('training')
   })

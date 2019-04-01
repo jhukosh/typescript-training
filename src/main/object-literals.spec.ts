@@ -1,11 +1,17 @@
+import { stringLiteral } from "@babel/types";
+
 describe('enhanced object literals', () => {
 
   it('can use shorthand for property names', () => {
 
-    function createBeatle(name, dead) {
+    function createBeatle(name : string, dead : boolean) {
       // Using NEW Object Literal Syntax, return a literal that will allow the tests to pass
       return {
-        type: 'Musician',
+        type : name,
+        state : dead,
+        wantsToPlayWith : function (instance) {
+          return `${this.name} wants to play with ${instance.name} ${instance.dead ? 'but he is' : 'and he is not'} dead`;
+        }
         // - in ES5 you'd do:
         // name: name,
         // dead: dead,
